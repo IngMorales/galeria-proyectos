@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Interactiva de Proyectos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Iconos (ejemplo con Font Awesome - opcional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Galería Interactiva de Proyectos</h1>
+        <div class="controls">
+             <button id="add-project-btn" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Agregar Proyecto
+            </button>
+             <button id="toggle-theme-btn" class="btn btn-secondary" title="Cambiar Tema">
+                <i class="fas fa-moon"></i>
+            </button>
+             <button id="clear-all-btn" class="btn btn-danger" title="Borrar Todos los Proyectos">
+                <i class="fas fa-trash-alt"></i> Limpiar Todo
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="form-section" class="form-container hidden">
+            <h2><span id="form-title">Agregar</span> Proyecto</h2>
+            <form id="project-form" novalidate>
+                <input type="hidden" id="project-id">
+                <div class="form-group">
+                    <label for="project-title">Título:</label>
+                    <input type="text" id="project-title" required>
+                    <span class="error-message">El título es obligatorio.</span>
+                </div>
+                <div class="form-group">
+                    <label for="project-desc">Descripción:</label>
+                    <textarea id="project-desc" rows="3"></textarea>
+                </div>
+                 <div class="form-group">
+                    <label for="project-image">Imagen (Opcional, máx 2MB):</label>
+                    <input type="file" id="project-image" accept="image/png, image/jpeg, image/gif">
+                    <span class="error-message">Archivo inválido o demasiado grande.</span>
+                    <img id="image-preview" src="#" alt="Vista previa" class="image-preview hidden"/>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="submit-btn" class="btn btn-success">
+                        <span class="btn-text">Guardar</span>
+                        <div id="loading-indicator" class="loader hidden"></div>
+                    </button>
+                    <button type="button" id="cancel-btn" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="gallery-section">
+            <h2>Proyectos Actuales</h2>
+            <div id="project-gallery" class="gallery-grid">
+                <!-- Las tarjetas de proyecto se insertarán aquí -->
+                 <p id="no-projects-message" class="hidden">No hay proyectos para mostrar. ¡Agrega uno!</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

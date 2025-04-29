@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Interactiva de Proyectos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>🎨 Galería de Proyectos</h1>
+        <button id="toggleTheme">🌙 Modo Oscuro</button>
+    </header>
+
+    <main>
+        <section id="form-section">
+            <h2>Agregar Nuevo Proyecto</h2>
+            <form id="project-form">
+                <input type="hidden" id="edit-id">
+                <label for="title">Título:</label>
+                <input type="text" id="title" required>
+
+                <label for="description">Descripción:</label>
+                <textarea id="description" required></textarea>
+
+                <label for="image">Imagen (opcional):</label>
+                <input type="file" id="image" accept="image/*">
+
+                <div class="loader" id="loader" style="display: none;">Cargando...</div>
+                <button type="submit">Guardar Proyecto</button>
+            </form>
+        </section>
+
+        <section id="projects-grid"></section>
+
+        <button id="clearAll" class="danger">🗑 Limpiar Todo</button>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

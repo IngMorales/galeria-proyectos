@@ -1,0 +1,292 @@
+/* Estilos Base y Variables */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --background-color: #ffffff;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    --border-color: #dee2e6;
+    --transition-speed: 0.3s;
+}
+
+/* Modo Oscuro */
+body.dark-mode {
+    --primary-color: #3793ff;
+    --secondary-color: #8a939b;
+    --light-color: #495057;
+    --dark-color: #e9ecef;
+    --background-color: #212529;
+    --text-color: #f8f9fa;
+    --card-bg: #343a40;
+    --card-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    --border-color: #495057;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para responsividad */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+header .controls {
+    display: flex;
+    gap: 0.5rem; /* Espacio entre botones */
+    flex-wrap: wrap; /* Para responsividad */
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Botones Generales */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    background-color: var(--primary-color);
+    color: white;
+    display: inline-flex; /* Para alinear íconos */
+    align-items: center;
+    gap: 0.4rem; /* Espacio entre ícono y texto */
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-danger { background-color: var(--danger-color); }
+.btn-secondary { background-color: var(--secondary-color); }
+
+/* Formulario */
+.form-container {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease, max-height 0.5s ease-out;
+    overflow: hidden;
+    max-height: 1000px; /* Suficiente para el contenido */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-container.hidden {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    transform: translateY(-20px);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box; /* Para que el padding no aumente el ancho */
+}
+
+.form-group textarea {
+    resize: vertical; /* Permitir redimensionar verticalmente */
+}
+
+.form-group input[type="file"] {
+    padding: 0.3rem; /* Ajuste para input file */
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: flex-end; /* Alinear botones a la derecha */
+}
+
+/* Indicador de carga */
+.loading {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    transition: opacity var(--transition-speed) ease;
+}
+.loading.hidden {
+    opacity: 0;
+    display: none;
+}
+
+/* Mensajes de error */
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.85rem;
+    display: block; /* Para que ocupe su línea */
+    margin-top: 0.3rem;
+    min-height: 1em; /* Para evitar saltos de layout */
+}
+
+/* Galería */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Diseño de cuadrícula responsiva */
+    gap: 1.5rem;
+}
+
+/* Tarjeta de Proyecto */
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden; /* Para que la imagen no se salga */
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+    transform: translateY(-5px) scale(1.02); /* Efecto hover sutil */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.project-card img.project-image {
+    width: 100%;
+    height: 200px; /* Altura fija para la imagen */
+    object-fit: cover; /* Cubrir el área sin distorsionar */
+    display: block; /* Eliminar espacio bajo la imagen */
+    background-color: #eee; /* Fondo mientras carga o si no hay imagen */
+}
+
+.project-card .card-content {
+    padding: 1rem;
+    flex-grow: 1; /* Para que el contenido ocupe el espacio restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.project-card p {
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Para que la descripción empuje los botones abajo */
+    color: var(--text-color);
+}
+
+.project-card .card-actions {
+    display: flex;
+    justify-content: flex-end; /* Alinear botones a la derecha */
+    gap: 0.5rem;
+    margin-top: auto; /* Empujar al final de la tarjeta */
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.card-actions .btn-icon {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    transition: color var(--transition-speed) ease;
+}
+
+.card-actions .btn-icon.edit-btn:hover { color: var(--primary-color); }
+.card-actions .btn-icon.delete-btn:hover { color: var(--danger-color); }
+
+/* Animación al agregar/eliminar */
+.project-card.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.project-card.fade-out {
+    animation: fadeOut 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.9); }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    header .controls {
+        width: 100%;
+        justify-content: space-between; /* Mejor distribución en móvil */
+    }
+    main {
+        padding: 1rem;
+    }
+    .gallery {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+     .form-actions {
+        flex-direction: column; /* Apilar botones en móvil */
+        gap: 0.5rem;
+    }
+    .form-actions button {
+        width: 100%; /* Botones ocupan todo el ancho */
+    }
+}
